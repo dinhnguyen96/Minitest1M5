@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -20,4 +21,28 @@ public class ProductController {
     public ResponseEntity<List<Product>> productList() {
         return new ResponseEntity<>(productService.lists(), HttpStatus.OK);
     }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable("id") Long id)
+    {
+        productService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PutMapping("/updateProduct/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") Long id, @RequestBody Product product)
+    {
+        Optional<Product> p = productService.findOne(id);
+        if (!p.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        product.setId(p.get().getId());
+        return new ResponseEntity<>(productService.save(product) ,HttpStatus.OK);
+    }
+
+    @PostMapping("/createProduct")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product)
+    {
+        return new ResponseEntity<>(productService.save(product) ,HttpStatus.CREATED);
+    }
+
 }
