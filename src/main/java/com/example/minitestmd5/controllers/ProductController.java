@@ -2,6 +2,7 @@ package com.example.minitestmd5.controllers;
 
 import com.example.minitestmd5.models.Product;
 import com.example.minitestmd5.service.impl.ProductService;
+import com.example.minitestmd5.service.iservice.IProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import java.util.Optional;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    private ProductService productService;
+    private IProduct productService;
 
     @GetMapping("/list")
     public ResponseEntity<List<Product>> productList() {
