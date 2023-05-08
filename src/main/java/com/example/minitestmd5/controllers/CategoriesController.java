@@ -20,12 +20,12 @@ public class CategoriesController
     private ICategories categoriesService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<Categories>> productList() {
+    public ResponseEntity<List<Categories>> categoriesList() {
         return new ResponseEntity<>(categoriesService.lists(), HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteCategories/{id}")
-    public ResponseEntity<Product> deleteCategories(@PathVariable("id") Long id)
+    public ResponseEntity<Categories> deleteCategories(@PathVariable("id") Long id)
     {
         categoriesService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -42,7 +42,7 @@ public class CategoriesController
     }
 
     @PostMapping("/createCategories")
-    public ResponseEntity<Categories> createProduct(@RequestBody Categories categories)
+    public ResponseEntity<Categories> createCategories(@RequestBody Categories categories)
     {
         return new ResponseEntity<>(categoriesService.save(categories) ,HttpStatus.CREATED);
     }

@@ -1,7 +1,6 @@
 package com.example.minitestmd5.controllers;
 
 import com.example.minitestmd5.models.Product;
-import com.example.minitestmd5.service.impl.ProductService;
 import com.example.minitestmd5.service.iservice.IProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
