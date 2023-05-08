@@ -45,4 +45,13 @@ public class ProductController {
         return new ResponseEntity<>(productService.save(product) ,HttpStatus.CREATED);
     }
 
+    @GetMapping("/searchProduct")
+    public ResponseEntity<List<Product>> searchProduct(@RequestParam("categoriesId") Long categoriesId, @RequestParam("productName") String productName, @RequestParam("productPrice") double productPrice )
+    {
+        List<Product> products = (List<Product>) productService.findProductsByNameOrPriceOrCategories(productName, productPrice, categoriesId);
+        return new ResponseEntity<>(products ,HttpStatus.OK);
+    }
+
+
+
 }

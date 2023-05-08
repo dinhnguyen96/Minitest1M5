@@ -31,4 +31,9 @@ public class ProductService implements IProduct {
     public Optional<Product> findOne(Long id) {
         return productRepository.findById(id);
     }
+
+    @Override
+    public Iterable<Product> findProductsByNameOrPriceOrCategories(String productName, double productPrice, Long categoriesId) {
+        return productRepository.findProductsByNameOrPriceOrCategories(productName, productPrice, categoriesId);
+    }
 }
