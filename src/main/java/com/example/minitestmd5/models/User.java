@@ -1,5 +1,6 @@
 package com.example.minitestmd5.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -22,7 +23,6 @@ public class User {
 
 
   private String email;
-
 
   private String password;
 

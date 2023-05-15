@@ -1,5 +1,6 @@
 package com.example.minitestmd5.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Range;
 
